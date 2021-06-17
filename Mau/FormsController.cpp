@@ -18,6 +18,22 @@ FormEditorController::FormEditorController() : FormEditor(nullptr)
 	
 }
 
+DialogUnsavedFileController::DialogUnsavedFileController(FormEditorController* parent) : DialogUnsavedFile(parent)
+{
+	this->parent = parent;
+}
+
+void DialogUnsavedFileController::Click_confirm_save(wxCommandEvent& event)
+{
+	parent->SaveFile();
+	exit(0);
+}
+
+void DialogUnsavedFileController::Click_no_save(wxCommandEvent& event)
+{
+	exit(0);
+}
+
 void FormFontController::FontChanged(wxFontPickerEvent& event)
 {
 	formEditorController->SetStyledTextCtrlFont(m_fontPicker->GetSelectedFont());
@@ -65,21 +81,7 @@ void FormEditorController::CharHook_styled_text_ctrl_1(wxKeyEvent& event)
 
 void FormEditorController::MenuSelect_save(wxCommandEvent& event)
 {
-	if (!filePath.empty())
-	{
-		wxString title = GetTitle();
-
-		if ((char)title.GetChar(0) == '*')
-		{
-			title.Remove(0, 1);
-			SetTitle(title);
-		}
-
-		wxFile file(filePath, wxFile::write);
-		file.Write(m_styled_text_ctrl_1->GetValue());
-		file.Close();
-	}
-
+	SaveFile();
 	event.Skip();
 }
 
@@ -150,5 +152,32 @@ void FormEditorController::MenuSelect_font(wxCommandEvent& event)
 
 void FormEditorController::Close_master(wxCloseEvent& event)
 {
-	event.Skip();
+	if ((char)GetTitle().GetChar(0) == '*')
+	{
+		dialogUnsavedFile = new DialogUnsavedFileController(this);
+
+		dialogUnsavedFile->Show();
+	}
+	else
+	{
+		event.Skip();
+	}
+}
+
+void FormEditorController::SaveFile()
+{
+	if (!filePath.empty())
+	{
+		wxString title = GetTitle();
+
+		if ((char)title.GetChar(0) == '*')
+		{
+			title.Remove(0, 1);
+			SetTitle(title);
+		}
+
+		wxFile file(filePath, wxFile::write);
+		file.Write(m_styled_text_ctrl_1->GetValue());
+		file.Close();
+	}
 }

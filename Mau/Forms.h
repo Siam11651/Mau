@@ -26,6 +26,8 @@
 #include <wx/stattext.h>
 #include <wx/statbox.h>
 #include <wx/fontpicker.h>
+#include <wx/button.h>
+#include <wx/dialog.h>
 
 ///////////////////////////////////////////////////////////////////////////
 
@@ -44,6 +46,8 @@
 #define ID_FORM_FONT 1012
 #define ID_PANEL_FONT 1013
 #define ID_SB_SIZER_FONT 1014
+#define ID_DIALOG_UNSAVED_FILE 1015
+#define ID_PANEL_UNSAVED_FILE 1016
 
 ///////////////////////////////////////////////////////////////////////////////
 /// Class FormEditor
@@ -121,6 +125,31 @@ class FormFont : public wxFrame
 		FormFont( wxWindow* parent, wxWindowID id = ID_FORM_FONT, const wxString& title = wxT("Font"), const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxSize( 500,300 ), long style = wxCAPTION|wxCLOSE_BOX|wxTAB_TRAVERSAL );
 
 		~FormFont();
+
+};
+
+///////////////////////////////////////////////////////////////////////////////
+/// Class DialogUnsavedFile
+///////////////////////////////////////////////////////////////////////////////
+class DialogUnsavedFile : public wxDialog
+{
+	private:
+
+	protected:
+		wxPanel* m_panel_usaved_file;
+		wxStaticText* m_staticText_unsaved_file;
+		wxButton* m_button_unsaved_file_yes;
+		wxButton* m_button_unsaved_file_no;
+
+		// Virtual event handlers, overide them in your derived class
+		virtual void Click_confirm_save( wxCommandEvent& event ) { event.Skip(); }
+		virtual void Click_no_save( wxCommandEvent& event ) { event.Skip(); }
+
+
+	public:
+
+		DialogUnsavedFile( wxWindow* parent, wxWindowID id = ID_DIALOG_UNSAVED_FILE, const wxString& title = wxT("File Not Saved"), const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxSize( -1,-1 ), long style = wxDEFAULT_DIALOG_STYLE );
+		~DialogUnsavedFile();
 
 };
 

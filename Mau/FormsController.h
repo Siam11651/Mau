@@ -33,6 +33,7 @@ class FormEditorController : public FormEditor
 	wxString filePath;
 	FormAboutController* formAboutController;
 	FormFontController* formFontController;
+	DialogUnsavedFile* dialogUnsavedFile;
 
 	void MenuSelect_save(wxCommandEvent& event);
 	void MenuSelect_new(wxCommandEvent& event);
@@ -46,5 +47,16 @@ public:
 	FormEditorController();
 	wxFont GetStyledTextCtrlFont();
 	void SetStyledTextCtrlFont(wxFont font);
+	void SaveFile();
+};
+
+class DialogUnsavedFileController : public DialogUnsavedFile
+{
+	FormEditorController* parent;
+
+	void Click_confirm_save(wxCommandEvent& event);
+	void Click_no_save(wxCommandEvent& event);
+public:
+	DialogUnsavedFileController(FormEditorController* parent);
 };
 

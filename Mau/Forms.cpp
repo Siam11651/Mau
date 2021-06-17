@@ -216,3 +216,56 @@ FormFont::~FormFont()
 	m_fontPicker->Disconnect( wxEVT_COMMAND_FONTPICKER_CHANGED, wxFontPickerEventHandler( FormFont::FontChanged ), NULL, this );
 
 }
+
+DialogUnsavedFile::DialogUnsavedFile( wxWindow* parent, wxWindowID id, const wxString& title, const wxPoint& pos, const wxSize& size, long style ) : wxDialog( parent, id, title, pos, size, style )
+{
+	this->SetSizeHints( wxDefaultSize, wxDefaultSize );
+
+	wxBoxSizer* bSizer_unsaved_file_1;
+	bSizer_unsaved_file_1 = new wxBoxSizer( wxVERTICAL );
+
+	m_panel_usaved_file = new wxPanel( this, ID_PANEL_UNSAVED_FILE, wxDefaultPosition, wxDefaultSize, wxTAB_TRAVERSAL );
+	wxBoxSizer* bSizer_unsaved_file_2;
+	bSizer_unsaved_file_2 = new wxBoxSizer( wxVERTICAL );
+
+	m_staticText_unsaved_file = new wxStaticText( m_panel_usaved_file, wxID_ANY, wxT("Save file before closing?"), wxDefaultPosition, wxDefaultSize, 0 );
+	m_staticText_unsaved_file->Wrap( -1 );
+	bSizer_unsaved_file_2->Add( m_staticText_unsaved_file, 0, wxALL, 5 );
+
+	wxBoxSizer* bSizer_unsaved_file_3;
+	bSizer_unsaved_file_3 = new wxBoxSizer( wxHORIZONTAL );
+
+	m_button_unsaved_file_yes = new wxButton( m_panel_usaved_file, wxID_ANY, wxT("Yes"), wxDefaultPosition, wxDefaultSize, 0 );
+	bSizer_unsaved_file_3->Add( m_button_unsaved_file_yes, 0, wxALL, 5 );
+
+	m_button_unsaved_file_no = new wxButton( m_panel_usaved_file, wxID_ANY, wxT("No"), wxDefaultPosition, wxDefaultSize, 0 );
+	bSizer_unsaved_file_3->Add( m_button_unsaved_file_no, 0, wxALL, 5 );
+
+
+	bSizer_unsaved_file_2->Add( bSizer_unsaved_file_3, 1, wxEXPAND, 5 );
+
+
+	m_panel_usaved_file->SetSizer( bSizer_unsaved_file_2 );
+	m_panel_usaved_file->Layout();
+	bSizer_unsaved_file_2->Fit( m_panel_usaved_file );
+	bSizer_unsaved_file_1->Add( m_panel_usaved_file, 1, wxEXPAND | wxALL, 5 );
+
+
+	this->SetSizer( bSizer_unsaved_file_1 );
+	this->Layout();
+	bSizer_unsaved_file_1->Fit( this );
+
+	this->Centre( wxBOTH );
+
+	// Connect Events
+	m_button_unsaved_file_yes->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( DialogUnsavedFile::Click_confirm_save ), NULL, this );
+	m_button_unsaved_file_no->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( DialogUnsavedFile::Click_no_save ), NULL, this );
+}
+
+DialogUnsavedFile::~DialogUnsavedFile()
+{
+	// Disconnect Events
+	m_button_unsaved_file_yes->Disconnect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( DialogUnsavedFile::Click_confirm_save ), NULL, this );
+	m_button_unsaved_file_no->Disconnect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( DialogUnsavedFile::Click_no_save ), NULL, this );
+
+}
