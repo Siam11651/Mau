@@ -1,5 +1,7 @@
 # Mau
  ### A simple Text Editor built with wxWidgets C++
+ 
+ ![Mau](Screenshots/Capture.PNG)
 
  ## Prerequisites:
  - wxWidgets C++ >= 3.1.5
