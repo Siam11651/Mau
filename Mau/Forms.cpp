@@ -163,60 +163,6 @@ FormAbout::~FormAbout()
 {
 }
 
-FormFont::FormFont( wxWindow* parent, wxWindowID id, const wxString& title, const wxPoint& pos, const wxSize& size, long style ) : wxFrame( parent, id, title, pos, size, style )
-{
-	this->SetSizeHints( wxDefaultSize, wxDefaultSize );
-
-	wxBoxSizer* bSizerFont1;
-	bSizerFont1 = new wxBoxSizer( wxVERTICAL );
-
-	m_panel_font = new wxPanel( this, ID_PANEL_FONT, wxDefaultPosition, wxDefaultSize, wxTAB_TRAVERSAL );
-	wxBoxSizer* bSizerFont2;
-	bSizerFont2 = new wxBoxSizer( wxVERTICAL );
-
-	m_panel4 = new wxPanel( m_panel_font, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxTAB_TRAVERSAL );
-	m_panel4->SetMaxSize( wxSize( -1,75 ) );
-
-	wxStaticBoxSizer* sbSizer_font;
-	sbSizer_font = new wxStaticBoxSizer( new wxStaticBox( m_panel4, ID_SB_SIZER_FONT, wxT("Preview") ), wxVERTICAL );
-
-	m_staticText_font = new wxStaticText( sbSizer_font->GetStaticBox(), wxID_ANY, wxT("Sample Text"), wxDefaultPosition, wxDefaultSize, 0 );
-	m_staticText_font->Wrap( -1 );
-	sbSizer_font->Add( m_staticText_font, 0, wxALL, 10 );
-
-
-	m_panel4->SetSizer( sbSizer_font );
-	m_panel4->Layout();
-	sbSizer_font->Fit( m_panel4 );
-	bSizerFont2->Add( m_panel4, 1, wxEXPAND | wxALL, 5 );
-
-	m_fontPicker = new wxFontPickerCtrl( m_panel_font, wxID_ANY, wxFont( 22, wxFONTFAMILY_DEFAULT, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_NORMAL, false, wxT("Constantia") ), wxDefaultPosition, wxDefaultSize, 0 );
-	m_fontPicker->SetMaxPointSize( 100 );
-	bSizerFont2->Add( m_fontPicker, 0, wxALL, 5 );
-
-
-	m_panel_font->SetSizer( bSizerFont2 );
-	m_panel_font->Layout();
-	bSizerFont2->Fit( m_panel_font );
-	bSizerFont1->Add( m_panel_font, 1, wxEXPAND | wxALL, 0 );
-
-
-	this->SetSizer( bSizerFont1 );
-	this->Layout();
-
-	this->Centre( wxBOTH );
-
-	// Connect Events
-	m_fontPicker->Connect( wxEVT_COMMAND_FONTPICKER_CHANGED, wxFontPickerEventHandler( FormFont::FontChanged ), NULL, this );
-}
-
-FormFont::~FormFont()
-{
-	// Disconnect Events
-	m_fontPicker->Disconnect( wxEVT_COMMAND_FONTPICKER_CHANGED, wxFontPickerEventHandler( FormFont::FontChanged ), NULL, this );
-
-}
-
 DialogUnsavedFile::DialogUnsavedFile( wxWindow* parent, wxWindowID id, const wxString& title, const wxPoint& pos, const wxSize& size, long style ) : wxDialog( parent, id, title, pos, size, style )
 {
 	this->SetSizeHints( wxDefaultSize, wxDefaultSize );
@@ -267,5 +213,59 @@ DialogUnsavedFile::~DialogUnsavedFile()
 	// Disconnect Events
 	m_button_unsaved_file_yes->Disconnect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( DialogUnsavedFile::Click_confirm_save ), NULL, this );
 	m_button_unsaved_file_no->Disconnect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( DialogUnsavedFile::Click_no_save ), NULL, this );
+
+}
+
+DialogFont::DialogFont( wxWindow* parent, wxWindowID id, const wxString& title, const wxPoint& pos, const wxSize& size, long style ) : wxDialog( parent, id, title, pos, size, style )
+{
+	this->SetSizeHints( wxDefaultSize, wxDefaultSize );
+
+	wxBoxSizer* bSizerFont1;
+	bSizerFont1 = new wxBoxSizer( wxVERTICAL );
+
+	m_panel_font = new wxPanel( this, ID_PANEL_FONT, wxDefaultPosition, wxDefaultSize, wxTAB_TRAVERSAL );
+	wxBoxSizer* bSizerFont2;
+	bSizerFont2 = new wxBoxSizer( wxVERTICAL );
+
+	m_panel4 = new wxPanel( m_panel_font, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxTAB_TRAVERSAL );
+	m_panel4->SetMaxSize( wxSize( -1,75 ) );
+
+	wxStaticBoxSizer* sbSizer_font;
+	sbSizer_font = new wxStaticBoxSizer( new wxStaticBox( m_panel4, ID_SB_SIZER_FONT, wxT("Preview") ), wxVERTICAL );
+
+	m_staticText_font = new wxStaticText( sbSizer_font->GetStaticBox(), wxID_ANY, wxT("Sample Text"), wxDefaultPosition, wxDefaultSize, 0 );
+	m_staticText_font->Wrap( -1 );
+	sbSizer_font->Add( m_staticText_font, 0, wxALL, 10 );
+
+
+	m_panel4->SetSizer( sbSizer_font );
+	m_panel4->Layout();
+	sbSizer_font->Fit( m_panel4 );
+	bSizerFont2->Add( m_panel4, 1, wxEXPAND | wxALL, 5 );
+
+	m_fontPicker = new wxFontPickerCtrl( m_panel_font, wxID_ANY, wxFont( 22, wxFONTFAMILY_DEFAULT, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_NORMAL, false, wxT("Constantia") ), wxDefaultPosition, wxDefaultSize, 0 );
+	m_fontPicker->SetMaxPointSize( 100 );
+	bSizerFont2->Add( m_fontPicker, 0, wxALL, 5 );
+
+
+	m_panel_font->SetSizer( bSizerFont2 );
+	m_panel_font->Layout();
+	bSizerFont2->Fit( m_panel_font );
+	bSizerFont1->Add( m_panel_font, 1, wxEXPAND | wxALL, 0 );
+
+
+	this->SetSizer( bSizerFont1 );
+	this->Layout();
+
+	this->Centre( wxBOTH );
+
+	// Connect Events
+	m_fontPicker->Connect( wxEVT_COMMAND_FONTPICKER_CHANGED, wxFontPickerEventHandler( DialogFont::FontChanged ), NULL, this );
+}
+
+DialogFont::~DialogFont()
+{
+	// Disconnect Events
+	m_fontPicker->Disconnect( wxEVT_COMMAND_FONTPICKER_CHANGED, wxFontPickerEventHandler( DialogFont::FontChanged ), NULL, this );
 
 }

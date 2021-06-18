@@ -18,21 +18,21 @@ public:
 	FormAboutController(wxWindow* parent);
 };
 
-class FormFontController : public FormFont
+class DialogFontController : public DialogFont
 {
 	FormEditorController* formEditorController;
 
 	void FontChanged(wxFontPickerEvent& event);
 
 public:
-	FormFontController(FormEditorController* formEditorController);
+	DialogFontController(FormEditorController* formEditorController);
 };
 
 class FormEditorController : public FormEditor
 {
 	wxString filePath;
 	FormAboutController* formAboutController;
-	FormFontController* formFontController;
+	DialogFontController* dialogFontController;
 	DialogUnsavedFile* dialogUnsavedFile;
 
 	void MenuSelect_save(wxCommandEvent& event);

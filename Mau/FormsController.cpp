@@ -5,7 +5,7 @@ FormAboutController::FormAboutController(wxWindow* parent) : FormAbout(parent)
 
 }
 
-FormFontController::FormFontController(FormEditorController* formEditorController) : FormFont(formEditorController)
+DialogFontController::DialogFontController(FormEditorController* formEditorController) : DialogFont(formEditorController)
 {
 	this->formEditorController = formEditorController;
 
@@ -34,7 +34,7 @@ void DialogUnsavedFileController::Click_no_save(wxCommandEvent& event)
 	exit(0);
 }
 
-void FormFontController::FontChanged(wxFontPickerEvent& event)
+void DialogFontController::FontChanged(wxFontPickerEvent& event)
 {
 	formEditorController->SetStyledTextCtrlFont(m_fontPicker->GetSelectedFont());
 	wxFile settingsFile(L"settings.txt", wxFile::write);
@@ -143,10 +143,9 @@ void FormEditorController::MenuSelect_about(wxCommandEvent& event)
 
 void FormEditorController::MenuSelect_font(wxCommandEvent& event)
 {
-	formFontController = new FormFontController(this);
+	dialogFontController = new DialogFontController(this);
 
-	formFontController->SetIcons(wxIcon("resources/icons/Mau.ico", wxBITMAP_TYPE_ICO));
-	formFontController->Show();
+	dialogFontController->ShowModal();
 	event.Skip();
 }
 

@@ -24,10 +24,10 @@
 #include <wx/frame.h>
 #include <wx/statbmp.h>
 #include <wx/stattext.h>
-#include <wx/statbox.h>
-#include <wx/fontpicker.h>
 #include <wx/button.h>
 #include <wx/dialog.h>
+#include <wx/statbox.h>
+#include <wx/fontpicker.h>
 
 ///////////////////////////////////////////////////////////////////////////
 
@@ -43,11 +43,11 @@
 #define ID_PANEL_ABOUT 1009
 #define ID_BITMAP_ABOUT 1010
 #define ID_STATIC_TEXT_ABOUT 1011
-#define ID_FORM_FONT 1012
-#define ID_PANEL_FONT 1013
-#define ID_SB_SIZER_FONT 1014
-#define ID_DIALOG_UNSAVED_FILE 1015
-#define ID_PANEL_UNSAVED_FILE 1016
+#define ID_DIALOG_UNSAVED_FILE 1012
+#define ID_PANEL_UNSAVED_FILE 1013
+#define ID_DIALOG_FONT 1014
+#define ID_PANEL_FONT 1015
+#define ID_SB_SIZER_FONT 1016
 
 ///////////////////////////////////////////////////////////////////////////////
 /// Class FormEditor
@@ -104,31 +104,6 @@ class FormAbout : public wxFrame
 };
 
 ///////////////////////////////////////////////////////////////////////////////
-/// Class FormFont
-///////////////////////////////////////////////////////////////////////////////
-class FormFont : public wxFrame
-{
-	private:
-
-	protected:
-		wxPanel* m_panel_font;
-		wxPanel* m_panel4;
-		wxStaticText* m_staticText_font;
-		wxFontPickerCtrl* m_fontPicker;
-
-		// Virtual event handlers, overide them in your derived class
-		virtual void FontChanged( wxFontPickerEvent& event ) { event.Skip(); }
-
-
-	public:
-
-		FormFont( wxWindow* parent, wxWindowID id = ID_FORM_FONT, const wxString& title = wxT("Font"), const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxSize( 500,300 ), long style = wxCAPTION|wxCLOSE_BOX|wxTAB_TRAVERSAL );
-
-		~FormFont();
-
-};
-
-///////////////////////////////////////////////////////////////////////////////
 /// Class DialogUnsavedFile
 ///////////////////////////////////////////////////////////////////////////////
 class DialogUnsavedFile : public wxDialog
@@ -150,6 +125,30 @@ class DialogUnsavedFile : public wxDialog
 
 		DialogUnsavedFile( wxWindow* parent, wxWindowID id = ID_DIALOG_UNSAVED_FILE, const wxString& title = wxT("File Not Saved"), const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxSize( -1,-1 ), long style = wxDEFAULT_DIALOG_STYLE );
 		~DialogUnsavedFile();
+
+};
+
+///////////////////////////////////////////////////////////////////////////////
+/// Class DialogFont
+///////////////////////////////////////////////////////////////////////////////
+class DialogFont : public wxDialog
+{
+	private:
+
+	protected:
+		wxPanel* m_panel_font;
+		wxPanel* m_panel4;
+		wxStaticText* m_staticText_font;
+		wxFontPickerCtrl* m_fontPicker;
+
+		// Virtual event handlers, overide them in your derived class
+		virtual void FontChanged( wxFontPickerEvent& event ) { event.Skip(); }
+
+
+	public:
+
+		DialogFont( wxWindow* parent, wxWindowID id = ID_DIALOG_FONT, const wxString& title = wxT("Font"), const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxSize( 500,300 ), long style = wxDEFAULT_DIALOG_STYLE );
+		~DialogFont();
 
 };
 
