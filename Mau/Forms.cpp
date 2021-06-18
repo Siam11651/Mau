@@ -120,49 +120,6 @@ FormEditor::~FormEditor()
 
 }
 
-FormAbout::FormAbout( wxWindow* parent, wxWindowID id, const wxString& title, const wxPoint& pos, const wxSize& size, long style ) : wxFrame( parent, id, title, pos, size, style )
-{
-	this->SetSizeHints( wxDefaultSize, wxDefaultSize );
-
-	wxBoxSizer* bSizerHelp;
-	bSizerHelp = new wxBoxSizer( wxVERTICAL );
-
-	m_panelAbout = new wxPanel( this, ID_PANEL_ABOUT, wxDefaultPosition, wxDefaultSize, wxTAB_TRAVERSAL );
-	wxBoxSizer* bSizerAbout1;
-	bSizerAbout1 = new wxBoxSizer( wxVERTICAL );
-
-	wxBoxSizer* bSizerAbout2;
-	bSizerAbout2 = new wxBoxSizer( wxHORIZONTAL );
-
-	m_bitmap_about = new wxStaticBitmap( m_panelAbout, ID_BITMAP_ABOUT, wxBitmap( wxT("resources/icons/Mau.bmp"), wxBITMAP_TYPE_ANY ), wxDefaultPosition, wxDefaultSize, 0 );
-	bSizerAbout2->Add( m_bitmap_about, 0, wxALL, 5 );
-
-	m_staticText_about = new wxStaticText( m_panelAbout, ID_STATIC_TEXT_ABOUT, wxT("\nMau Text Editor"), wxDefaultPosition, wxSize( -1,62 ), 0 );
-	m_staticText_about->Wrap( -1 );
-	m_staticText_about->SetFont( wxFont( 18, wxFONTFAMILY_DEFAULT, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_BOLD, false, wxEmptyString ) );
-
-	bSizerAbout2->Add( m_staticText_about, 0, wxALL, 5 );
-
-
-	bSizerAbout1->Add( bSizerAbout2, 1, wxEXPAND, 0 );
-
-
-	m_panelAbout->SetSizer( bSizerAbout1 );
-	m_panelAbout->Layout();
-	bSizerAbout1->Fit( m_panelAbout );
-	bSizerHelp->Add( m_panelAbout, 1, wxEXPAND | wxALL, 0 );
-
-
-	this->SetSizer( bSizerHelp );
-	this->Layout();
-
-	this->Centre( wxBOTH );
-}
-
-FormAbout::~FormAbout()
-{
-}
-
 DialogUnsavedFile::DialogUnsavedFile( wxWindow* parent, wxWindowID id, const wxString& title, const wxPoint& pos, const wxSize& size, long style ) : wxDialog( parent, id, title, pos, size, style )
 {
 	this->SetSizeHints( wxDefaultSize, wxDefaultSize );
@@ -268,4 +225,48 @@ DialogFont::~DialogFont()
 	// Disconnect Events
 	m_fontPicker->Disconnect( wxEVT_COMMAND_FONTPICKER_CHANGED, wxFontPickerEventHandler( DialogFont::FontChanged ), NULL, this );
 
+}
+
+DialogAbout::DialogAbout( wxWindow* parent, wxWindowID id, const wxString& title, const wxPoint& pos, const wxSize& size, long style ) : wxDialog( parent, id, title, pos, size, style )
+{
+	this->SetSizeHints( wxDefaultSize, wxDefaultSize );
+
+	wxBoxSizer* bSizerHelp;
+	bSizerHelp = new wxBoxSizer( wxVERTICAL );
+
+	m_panelAbout = new wxPanel( this, ID_PANEL_ABOUT, wxDefaultPosition, wxDefaultSize, wxTAB_TRAVERSAL );
+	wxBoxSizer* bSizerAbout1;
+	bSizerAbout1 = new wxBoxSizer( wxVERTICAL );
+
+	wxBoxSizer* bSizerAbout2;
+	bSizerAbout2 = new wxBoxSizer( wxHORIZONTAL );
+
+	m_bitmap_about = new wxStaticBitmap( m_panelAbout, ID_BITMAP_ABOUT, wxBitmap( wxT("resources/icons/Mau.bmp"), wxBITMAP_TYPE_ANY ), wxDefaultPosition, wxDefaultSize, 0 );
+	bSizerAbout2->Add( m_bitmap_about, 0, wxALL, 5 );
+
+	m_staticText_about = new wxStaticText( m_panelAbout, ID_STATIC_TEXT_ABOUT, wxT("\nMau Text Editor"), wxDefaultPosition, wxSize( -1,62 ), 0 );
+	m_staticText_about->Wrap( -1 );
+	m_staticText_about->SetFont( wxFont( 18, wxFONTFAMILY_DEFAULT, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_BOLD, false, wxEmptyString ) );
+
+	bSizerAbout2->Add( m_staticText_about, 0, wxALL, 5 );
+
+
+	bSizerAbout1->Add( bSizerAbout2, 1, wxEXPAND, 0 );
+
+
+	m_panelAbout->SetSizer( bSizerAbout1 );
+	m_panelAbout->Layout();
+	bSizerAbout1->Fit( m_panelAbout );
+	bSizerHelp->Add( m_panelAbout, 1, wxEXPAND | wxALL, 0 );
+
+
+	this->SetSizer( bSizerHelp );
+	this->Layout();
+	bSizerHelp->Fit( this );
+
+	this->Centre( wxBOTH );
+}
+
+DialogAbout::~DialogAbout()
+{
 }

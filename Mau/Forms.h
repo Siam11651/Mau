@@ -22,12 +22,12 @@
 #include <wx/icon.h>
 #include <wx/menu.h>
 #include <wx/frame.h>
-#include <wx/statbmp.h>
 #include <wx/stattext.h>
 #include <wx/button.h>
 #include <wx/dialog.h>
 #include <wx/statbox.h>
 #include <wx/fontpicker.h>
+#include <wx/statbmp.h>
 
 ///////////////////////////////////////////////////////////////////////////
 
@@ -39,15 +39,15 @@
 #define ID_MENU_ITEM_SAVE 1005
 #define ID_MENU_ITEM_FONT 1006
 #define ID_MENU_ITEM_ABOUT 1007
-#define ID_FORM_ABOUT 1008
-#define ID_PANEL_ABOUT 1009
-#define ID_BITMAP_ABOUT 1010
-#define ID_STATIC_TEXT_ABOUT 1011
-#define ID_DIALOG_UNSAVED_FILE 1012
-#define ID_PANEL_UNSAVED_FILE 1013
-#define ID_DIALOG_FONT 1014
-#define ID_PANEL_FONT 1015
-#define ID_SB_SIZER_FONT 1016
+#define ID_DIALOG_UNSAVED_FILE 1008
+#define ID_PANEL_UNSAVED_FILE 1009
+#define ID_DIALOG_FONT 1010
+#define ID_PANEL_FONT 1011
+#define ID_SB_SIZER_FONT 1012
+#define ID_DIALOG_ABOUT 1013
+#define ID_PANEL_ABOUT 1014
+#define ID_BITMAP_ABOUT 1015
+#define ID_STATIC_TEXT_ABOUT 1016
 
 ///////////////////////////////////////////////////////////////////////////////
 /// Class FormEditor
@@ -80,26 +80,6 @@ class FormEditor : public wxFrame
 		FormEditor( wxWindow* parent, wxWindowID id = ID_FORM_EDITOR, const wxString& title = wxT("Mau Editor"), const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxSize( 500,300 ), long style = wxDEFAULT_FRAME_STYLE|wxTAB_TRAVERSAL );
 
 		~FormEditor();
-
-};
-
-///////////////////////////////////////////////////////////////////////////////
-/// Class FormAbout
-///////////////////////////////////////////////////////////////////////////////
-class FormAbout : public wxFrame
-{
-	private:
-
-	protected:
-		wxPanel* m_panelAbout;
-		wxStaticBitmap* m_bitmap_about;
-		wxStaticText* m_staticText_about;
-
-	public:
-
-		FormAbout( wxWindow* parent, wxWindowID id = ID_FORM_ABOUT, const wxString& title = wxT("About"), const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxSize( 300,125 ), long style = wxCAPTION|wxCLOSE_BOX|wxFRAME_FLOAT_ON_PARENT|wxTAB_TRAVERSAL );
-
-		~FormAbout();
 
 };
 
@@ -149,6 +129,25 @@ class DialogFont : public wxDialog
 
 		DialogFont( wxWindow* parent, wxWindowID id = ID_DIALOG_FONT, const wxString& title = wxT("Font"), const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxSize( 500,300 ), long style = wxDEFAULT_DIALOG_STYLE );
 		~DialogFont();
+
+};
+
+///////////////////////////////////////////////////////////////////////////////
+/// Class DialogAbout
+///////////////////////////////////////////////////////////////////////////////
+class DialogAbout : public wxDialog
+{
+	private:
+
+	protected:
+		wxPanel* m_panelAbout;
+		wxStaticBitmap* m_bitmap_about;
+		wxStaticText* m_staticText_about;
+
+	public:
+
+		DialogAbout( wxWindow* parent, wxWindowID id = ID_DIALOG_ABOUT, const wxString& title = wxT("About"), const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxDefaultSize, long style = wxDEFAULT_DIALOG_STYLE );
+		~DialogAbout();
 
 };
 

@@ -1,6 +1,6 @@
 #include "FormsController.h"
 
-FormAboutController::FormAboutController(wxWindow* parent) : FormAbout(parent)
+DialogAboutController::DialogAboutController(wxWindow* parent) : DialogAbout(parent)
 {
 
 }
@@ -134,10 +134,9 @@ void FormEditorController::MenuSelect_open(wxCommandEvent& event)
 
 void FormEditorController::MenuSelect_about(wxCommandEvent& event)
 {
-	formAboutController = new FormAboutController(this);
+	dialogAboutController = new DialogAboutController(this);
 
-	formAboutController->SetIcons(wxIcon("resources/icons/Mau.ico", wxBITMAP_TYPE_ICO));
-	formAboutController->Show();
+	dialogAboutController->ShowModal();
 	event.Skip();
 }
 
@@ -155,7 +154,7 @@ void FormEditorController::Close_master(wxCloseEvent& event)
 	{
 		dialogUnsavedFile = new DialogUnsavedFileController(this);
 
-		dialogUnsavedFile->Show();
+		dialogUnsavedFile->ShowModal();
 	}
 	else
 	{

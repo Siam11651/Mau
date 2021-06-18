@@ -12,10 +12,10 @@ class FormEditorController;
 class FormAboutController;
 class FormFontController;
 
-class FormAboutController : public FormAbout
+class DialogAboutController : public DialogAbout
 {
 public:
-	FormAboutController(wxWindow* parent);
+	DialogAboutController(wxWindow* parent);
 };
 
 class DialogFontController : public DialogFont
@@ -31,7 +31,7 @@ public:
 class FormEditorController : public FormEditor
 {
 	wxString filePath;
-	FormAboutController* formAboutController;
+	DialogAboutController* dialogAboutController;
 	DialogFontController* dialogFontController;
 	DialogUnsavedFile* dialogUnsavedFile;
 
