@@ -9,8 +9,8 @@
 
 #include <wx/artprov.h>
 #include <wx/xrc/xmlres.h>
-#include <wx/stc/stc.h>
 #include <wx/gdicmn.h>
+#include <wx/aui/auibook.h>
 #include <wx/font.h>
 #include <wx/colour.h>
 #include <wx/settings.h>
@@ -28,26 +28,28 @@
 #include <wx/statbox.h>
 #include <wx/fontpicker.h>
 #include <wx/statbmp.h>
+#include <wx/stc/stc.h>
 
 ///////////////////////////////////////////////////////////////////////////
 
 #define ID_FORM_EDITOR 1000
 #define ID_PANEL_EDITOR 1001
-#define ID_STYLED_TEXT_CTRL_1 1002
+#define ID_AUINOTEBOOK_EDITOR 1002
 #define ID_MENU_ITEM_NEW 1003
 #define ID_MENU_ITEM_OPEN 1004
 #define ID_MENU_ITEM_SAVE 1005
-#define ID_MENU_ITEM_FONT 1006
-#define ID_MENU_ITEM_ABOUT 1007
-#define ID_DIALOG_UNSAVED_FILE 1008
-#define ID_PANEL_UNSAVED_FILE 1009
-#define ID_DIALOG_FONT 1010
-#define ID_PANEL_FONT 1011
-#define ID_SB_SIZER_FONT 1012
-#define ID_DIALOG_ABOUT 1013
-#define ID_PANEL_ABOUT 1014
-#define ID_BITMAP_ABOUT 1015
-#define ID_STATIC_TEXT_ABOUT 1016
+#define ID_MENU_ITEM_EXIT 1006
+#define ID_MENU_ITEM_FONT 1007
+#define ID_MENU_ITEM_ABOUT 1008
+#define ID_DIALOG_UNSAVED_FILE 1009
+#define ID_PANEL_UNSAVED_FILE 1010
+#define ID_DIALOG_FONT 1011
+#define ID_PANEL_FONT 1012
+#define ID_SB_SIZER_FONT 1013
+#define ID_DIALOG_ABOUT 1014
+#define ID_PANEL_ABOUT 1015
+#define ID_BITMAP_ABOUT 1016
+#define ID_STATIC_TEXT_ABOUT 1017
 
 ///////////////////////////////////////////////////////////////////////////////
 /// Class FormEditor
@@ -57,9 +59,8 @@ class FormEditor : public wxFrame
 	private:
 
 	protected:
-		wxPanel* m_panelEditor;
-		wxBoxSizer* bSizerEditor;
-		wxStyledTextCtrl* m_styled_text_ctrl_1;
+		wxPanel* m_panel_editor;
+		wxAuiNotebook* m_auinotebook_editor;
 		wxMenuBar* m_menubar1;
 		wxMenu* m_menuFile;
 		wxMenu* m_menuOptions;
@@ -67,10 +68,11 @@ class FormEditor : public wxFrame
 
 		// Virtual event handlers, overide them in your derived class
 		virtual void Close_master( wxCloseEvent& event ) { event.Skip(); }
-		virtual void CharHook_styled_text_ctrl_1( wxKeyEvent& event ) { event.Skip(); }
+		virtual void AuiNotebookPageClose_file( wxAuiNotebookEvent& event ) { event.Skip(); }
 		virtual void MenuSelect_new( wxCommandEvent& event ) { event.Skip(); }
 		virtual void MenuSelect_open( wxCommandEvent& event ) { event.Skip(); }
 		virtual void MenuSelect_save( wxCommandEvent& event ) { event.Skip(); }
+		virtual void MenuSelect_exit( wxCommandEvent& event ) { event.Skip(); }
 		virtual void MenuSelect_font( wxCommandEvent& event ) { event.Skip(); }
 		virtual void MenuSelect_about( wxCommandEvent& event ) { event.Skip(); }
 
@@ -148,6 +150,28 @@ class DialogAbout : public wxDialog
 
 		DialogAbout( wxWindow* parent, wxWindowID id = ID_DIALOG_ABOUT, const wxString& title = wxT("About"), const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxDefaultSize, long style = wxDEFAULT_DIALOG_STYLE );
 		~DialogAbout();
+
+};
+
+///////////////////////////////////////////////////////////////////////////////
+/// Class PanelFile
+///////////////////////////////////////////////////////////////////////////////
+class PanelFile : public wxPanel
+{
+	private:
+
+	protected:
+		wxBoxSizer* bSizerEditor;
+		wxStyledTextCtrl* m_styled_text_ctrl;
+
+		// Virtual event handlers, overide them in your derived class
+		virtual void CharHook_styled_text_ctrl( wxKeyEvent& event ) { event.Skip(); }
+
+
+	public:
+
+		PanelFile( wxWindow* parent, wxWindowID id = wxID_ANY, const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxSize( -1,-1 ), long style = wxTAB_TRAVERSAL, const wxString& name = wxEmptyString );
+		~PanelFile();
 
 };
 

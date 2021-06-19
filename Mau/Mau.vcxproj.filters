@@ -18,10 +18,25 @@
     <ClInclude Include="Main.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="FormsController.h">
+    <ClInclude Include="Forms.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Forms.h">
+    <ClInclude Include="MasterHeader.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="FormEditorController.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="PanelFileController.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="DialogAboutController.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="DialogFontController.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="DialogUnsavedFileController.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -29,10 +44,22 @@
     <ClCompile Include="Main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="FormsController.cpp">
+    <ClCompile Include="Forms.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Forms.cpp">
+    <ClCompile Include="FormEditorController.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="PanelFileController.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="DialogAboutController.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="DialogFontController.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="DialogUnsavedFileController.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

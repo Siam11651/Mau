@@ -1,4 +1,4 @@
-#include "Main.h"
+#include "MasterHeader.h"
 
 bool Main::OnInit()
 {	
@@ -35,7 +35,7 @@ bool Main::OnInit()
 
 	formEditorController = new FormEditorController();
 
-	formEditorController->SetStyledTextCtrlFont(font);
+	formEditorController->SetEditorTextFont(font);
 	formEditorController->SetIcons(wxIcon("resources/icons/Mau.ico", wxBITMAP_TYPE_ICO));
 	formEditorController->Maximize();
 	formEditorController->Show();

@@ -19,14 +19,23 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="FormsController.h" />
+    <ClInclude Include="MasterHeader.h" />
+    <ClInclude Include="DialogAboutController.h" />
+    <ClInclude Include="DialogFontController.h" />
+    <ClInclude Include="DialogUnsavedFileController.h" />
+    <ClInclude Include="FormEditorController.h" />
     <ClInclude Include="Forms.h" />
     <ClInclude Include="Main.h" />
+    <ClInclude Include="PanelFileController.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="FormsController.cpp" />
+    <ClCompile Include="DialogAboutController.cpp" />
+    <ClCompile Include="DialogFontController.cpp" />
+    <ClCompile Include="DialogUnsavedFileController.cpp" />
     <ClCompile Include="Forms.cpp" />
     <ClCompile Include="Main.cpp" />
+    <ClCompile Include="FormEditorController.cpp" />
+    <ClCompile Include="PanelFileController.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Mau Editor.fbp" />
