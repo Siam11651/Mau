@@ -104,7 +104,7 @@ DialogUnsavedFile::DialogUnsavedFile( wxWindow* parent, wxWindowID id, const wxS
 	wxBoxSizer* bSizer_unsaved_file_2;
 	bSizer_unsaved_file_2 = new wxBoxSizer( wxVERTICAL );
 
-	m_staticText_unsaved_file = new wxStaticText( m_panel_usaved_file, wxID_ANY, wxT("Save file before closing?"), wxDefaultPosition, wxDefaultSize, 0 );
+	m_staticText_unsaved_file = new wxStaticText( m_panel_usaved_file, wxID_ANY, wxT("Template is not saved.\nSave before closing?"), wxDefaultPosition, wxDefaultSize, 0 );
 	m_staticText_unsaved_file->Wrap( -1 );
 	bSizer_unsaved_file_2->Add( m_staticText_unsaved_file, 0, wxALL, 5 );
 

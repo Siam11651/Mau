@@ -105,7 +105,7 @@ class DialogUnsavedFile : public wxDialog
 
 	public:
 
-		DialogUnsavedFile( wxWindow* parent, wxWindowID id = ID_DIALOG_UNSAVED_FILE, const wxString& title = wxT("File Not Saved"), const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxSize( -1,-1 ), long style = wxDEFAULT_DIALOG_STYLE );
+		DialogUnsavedFile( wxWindow* parent, wxWindowID id = ID_DIALOG_UNSAVED_FILE, const wxString& title = wxT("Unsaved File"), const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxSize( -1,-1 ), long style = wxDEFAULT_DIALOG_STYLE );
 		~DialogUnsavedFile();
 
 };

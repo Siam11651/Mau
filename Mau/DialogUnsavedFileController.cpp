@@ -6,6 +6,9 @@ DialogUnsavedFileController::DialogUnsavedFileController(FormEditorController* p
 	this->parent = parent;
 	this->parentEvent = &parentEvent;
 	this->oldPage = oldPage;
+	
+	m_staticText_unsaved_file->SetLabel(
+		oldPage->GetFileName() + L" is not save.\nSave before closing?");
 }
 
 void DialogUnsavedFileController::Click_confirm_save(wxCommandEvent& event)

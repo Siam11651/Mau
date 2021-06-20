@@ -30,19 +30,6 @@ void FormEditorController::AuiNotebookPageClose_file(wxAuiNotebookEvent& event)
 
 void FormEditorController::Close_master(wxCloseEvent& event)
 {
-	/*
-	if ((char)GetTitle().GetChar(0) == '*')
-	{
-		dialogUnsavedFile = new DialogUnsavedFileController(this);
-
-		dialogUnsavedFile->ShowModal();
-	}
-	else
-	{
-		event.Skip();
-	}
-	*/
-
 	event.Skip();
 }
 
