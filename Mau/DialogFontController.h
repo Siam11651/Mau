@@ -1,5 +1,7 @@
 #pragma once
 
+#include "MasterHeader.h"
+
 class DialogFontController : public DialogFont
 {
 	FormEditorController* formEditorController;

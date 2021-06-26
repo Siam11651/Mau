@@ -1,5 +1,7 @@
 #pragma once
 
+#include "MasterHeader.h"
+
 class PanelFileController : public PanelFile
 {
 	wxString filePath;

@@ -1,10 +1,13 @@
 #pragma once
 
+#include "MasterHeader.h"
+
 class FormEditorController : public FormEditor
 {
 	DialogAboutController* dialogAboutController;
 	DialogFontController* dialogFontController;
 	DialogUnsavedFile* dialogUnsavedFile;
+	DialogUnsavedFileMasterController* dialogUnsavedFileMasterController;
 	wxFont editorTextFont;
 
 	void MenuSelect_save(wxCommandEvent& event);
@@ -21,4 +24,5 @@ public:
 	void SaveFile(PanelFileController* activePanelFile);
 	void SetEditorTextFont(wxFont font);
 	wxFont GetEditorTextFont();
+	wxAuiNotebook* GetEditorNoteBookPointer();
 };

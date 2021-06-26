@@ -226,6 +226,10 @@ DialogAbout::DialogAbout( wxWindow* parent, wxWindowID id, const wxString& title
 
 	bSizerAbout1->Add( bSizerAbout2, 1, wxEXPAND, 0 );
 
+	m_staticText_version = new wxStaticText( m_panelAbout, wxID_ANY, wxT("Version: 1.0"), wxDefaultPosition, wxDefaultSize, 0 );
+	m_staticText_version->Wrap( -1 );
+	bSizerAbout1->Add( m_staticText_version, 0, wxALL, 5 );
+
 
 	m_panelAbout->SetSizer( bSizerAbout1 );
 	m_panelAbout->Layout();
@@ -299,5 +303,61 @@ PanelFile::~PanelFile()
 {
 	// Disconnect Events
 	m_styled_text_ctrl->Disconnect( wxEVT_CHAR_HOOK, wxKeyEventHandler( PanelFile::CharHook_styled_text_ctrl ), NULL, this );
+
+}
+
+DialogUnsavedFileMaster::DialogUnsavedFileMaster( wxWindow* parent, wxWindowID id, const wxString& title, const wxPoint& pos, const wxSize& size, long style ) : wxDialog( parent, id, title, pos, size, style )
+{
+	this->SetSizeHints( wxDefaultSize, wxDefaultSize );
+
+	wxBoxSizer* bSizer_unsaved_file_master_1;
+	bSizer_unsaved_file_master_1 = new wxBoxSizer( wxVERTICAL );
+
+	m_panel_unsaved_file_master = new wxPanel( this, ID_PANEL_UNSAVED_FILE_MASTER, wxDefaultPosition, wxDefaultSize, wxTAB_TRAVERSAL );
+	wxBoxSizer* bSizer_unsaved_file_master_2;
+	bSizer_unsaved_file_master_2 = new wxBoxSizer( wxVERTICAL );
+
+	m_staticText_unsaved_file_master = new wxStaticText( m_panel_unsaved_file_master, ID_STATIC_TEXT_UNSAVED_FILE_MASTER, wxT("Select the files to save before closing:"), wxDefaultPosition, wxDefaultSize, 0 );
+	m_staticText_unsaved_file_master->Wrap( -1 );
+	bSizer_unsaved_file_master_2->Add( m_staticText_unsaved_file_master, 0, wxALL, 5 );
+
+	wxArrayString m_checkList_to_saveChoices;
+	m_checkList_to_save = new wxCheckListBox( m_panel_unsaved_file_master, ID_CHECKLIST_UNSAVED_FILE_MASTER, wxDefaultPosition, wxSize( 477,190 ), m_checkList_to_saveChoices, 0 );
+	bSizer_unsaved_file_master_2->Add( m_checkList_to_save, 0, wxALL, 5 );
+
+	wxBoxSizer* bSizer_unsaved_file_master_3;
+	bSizer_unsaved_file_master_3 = new wxBoxSizer( wxHORIZONTAL );
+
+	m_button_save_checked = new wxButton( m_panel_unsaved_file_master, ID_BUTTON_UNSAVED_FILE_MASTER, wxT("Save"), wxDefaultPosition, wxDefaultSize, 0 );
+	bSizer_unsaved_file_master_3->Add( m_button_save_checked, 0, wxALL, 5 );
+
+	m_button_exit_master = new wxButton( m_panel_unsaved_file_master, wxID_ANY, wxT("Don't Save"), wxDefaultPosition, wxDefaultSize, 0 );
+	bSizer_unsaved_file_master_3->Add( m_button_exit_master, 0, wxALL, 5 );
+
+
+	bSizer_unsaved_file_master_2->Add( bSizer_unsaved_file_master_3, 1, wxEXPAND, 5 );
+
+
+	m_panel_unsaved_file_master->SetSizer( bSizer_unsaved_file_master_2 );
+	m_panel_unsaved_file_master->Layout();
+	bSizer_unsaved_file_master_2->Fit( m_panel_unsaved_file_master );
+	bSizer_unsaved_file_master_1->Add( m_panel_unsaved_file_master, 1, wxEXPAND | wxALL, 0 );
+
+
+	this->SetSizer( bSizer_unsaved_file_master_1 );
+	this->Layout();
+
+	this->Centre( wxBOTH );
+
+	// Connect Events
+	m_button_save_checked->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( DialogUnsavedFileMaster::Click_save_master ), NULL, this );
+	m_button_exit_master->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( DialogUnsavedFileMaster::Click_not_save ), NULL, this );
+}
+
+DialogUnsavedFileMaster::~DialogUnsavedFileMaster()
+{
+	// Disconnect Events
+	m_button_save_checked->Disconnect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( DialogUnsavedFileMaster::Click_save_master ), NULL, this );
+	m_button_exit_master->Disconnect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( DialogUnsavedFileMaster::Click_not_save ), NULL, this );
 
 }

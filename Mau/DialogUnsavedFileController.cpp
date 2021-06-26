@@ -1,4 +1,10 @@
-#include "MasterHeader.h"
+#include "FormEditorController.h"
+#include "PanelFileController.h"
+#include "DialogAboutController.h"
+#include "DialogFontController.h"
+#include "DialogUnsavedFileController.h"
+#include "DialogUnsavedFileMasterController.h"
+#include "Main.h"
 
 DialogUnsavedFileController::DialogUnsavedFileController(FormEditorController* parent,
 	PanelFileController* oldPage, wxAuiNotebookEvent& parentEvent) : DialogUnsavedFile(parent)

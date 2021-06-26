@@ -1,8 +1,14 @@
-#include "MasterHeader.h"
+#include "FormEditorController.h"
+#include "PanelFileController.h"
+#include "DialogAboutController.h"
+#include "DialogFontController.h"
+#include "DialogUnsavedFileController.h"
+#include "DialogUnsavedFileMasterController.h"
+#include "Main.h"
 
 FormEditorController::FormEditorController() : FormEditor(nullptr)
 {
-
+	
 }
 
 void FormEditorController::AuiNotebookPageClose_file(wxAuiNotebookEvent& event)
@@ -30,7 +36,36 @@ void FormEditorController::AuiNotebookPageClose_file(wxAuiNotebookEvent& event)
 
 void FormEditorController::Close_master(wxCloseEvent& event)
 {
-	event.Skip();
+	bool hasUnsaved = false;
+	int pageCount = m_auinotebook_editor->GetPageCount();
+
+	for (int i = 0; i < pageCount; i++)
+	{
+		wxString name = ((PanelFileController*)m_auinotebook_editor->GetPage(i))->GetName();
+
+		if ((char)name.GetChar(0) == '*')
+		{
+			hasUnsaved = true;
+
+			break;
+		}
+	}
+
+	if (hasUnsaved)
+	{
+		dialogUnsavedFileMasterController = new DialogUnsavedFileMasterController(this);
+
+		dialogUnsavedFileMasterController->ShowModal();
+	}
+	else
+	{
+		event.Skip();
+	}
+}
+
+wxAuiNotebook* FormEditorController::GetEditorNoteBookPointer()
+{
+	return m_auinotebook_editor;
 }
 
 void FormEditorController::SaveFile(PanelFileController* activePanelFile)

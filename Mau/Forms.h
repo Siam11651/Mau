@@ -29,6 +29,7 @@
 #include <wx/fontpicker.h>
 #include <wx/statbmp.h>
 #include <wx/stc/stc.h>
+#include <wx/checklst.h>
 
 ///////////////////////////////////////////////////////////////////////////
 
@@ -50,6 +51,11 @@
 #define ID_PANEL_ABOUT 1015
 #define ID_BITMAP_ABOUT 1016
 #define ID_STATIC_TEXT_ABOUT 1017
+#define ID_DIALOG_UNSAVED_FILE_MASTER 1018
+#define ID_PANEL_UNSAVED_FILE_MASTER 1019
+#define ID_STATIC_TEXT_UNSAVED_FILE_MASTER 1020
+#define ID_CHECKLIST_UNSAVED_FILE_MASTER 1021
+#define ID_BUTTON_UNSAVED_FILE_MASTER 1022
 
 ///////////////////////////////////////////////////////////////////////////////
 /// Class FormEditor
@@ -145,6 +151,7 @@ class DialogAbout : public wxDialog
 		wxPanel* m_panelAbout;
 		wxStaticBitmap* m_bitmap_about;
 		wxStaticText* m_staticText_about;
+		wxStaticText* m_staticText_version;
 
 	public:
 
@@ -172,6 +179,32 @@ class PanelFile : public wxPanel
 
 		PanelFile( wxWindow* parent, wxWindowID id = wxID_ANY, const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxSize( -1,-1 ), long style = wxTAB_TRAVERSAL, const wxString& name = wxEmptyString );
 		~PanelFile();
+
+};
+
+///////////////////////////////////////////////////////////////////////////////
+/// Class DialogUnsavedFileMaster
+///////////////////////////////////////////////////////////////////////////////
+class DialogUnsavedFileMaster : public wxDialog
+{
+	private:
+
+	protected:
+		wxPanel* m_panel_unsaved_file_master;
+		wxStaticText* m_staticText_unsaved_file_master;
+		wxCheckListBox* m_checkList_to_save;
+		wxButton* m_button_save_checked;
+		wxButton* m_button_exit_master;
+
+		// Virtual event handlers, overide them in your derived class
+		virtual void Click_save_master( wxCommandEvent& event ) { event.Skip(); }
+		virtual void Click_not_save( wxCommandEvent& event ) { event.Skip(); }
+
+
+	public:
+
+		DialogUnsavedFileMaster( wxWindow* parent, wxWindowID id = ID_DIALOG_UNSAVED_FILE_MASTER, const wxString& title = wxT("Unsaved Files"), const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxSize( 500,300 ), long style = wxDEFAULT_DIALOG_STYLE );
+		~DialogUnsavedFileMaster();
 
 };
 

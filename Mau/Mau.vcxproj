@@ -19,6 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="DialogUnsavedFileMasterController.h" />
     <ClInclude Include="MasterHeader.h" />
     <ClInclude Include="DialogAboutController.h" />
     <ClInclude Include="DialogFontController.h" />
@@ -32,6 +33,7 @@
     <ClCompile Include="DialogAboutController.cpp" />
     <ClCompile Include="DialogFontController.cpp" />
     <ClCompile Include="DialogUnsavedFileController.cpp" />
+    <ClCompile Include="DialogUnsavedFileMasterController.cpp" />
     <ClCompile Include="Forms.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="FormEditorController.cpp" />

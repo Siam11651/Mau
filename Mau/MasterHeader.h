@@ -13,11 +13,5 @@ class FormEditorController;
 class DialogAboutController;
 class DialogFontController;
 class PanelFileController;
+class DialogUnsavedFileMasterController;
 class Main;
-
-#include "FormEditorController.h"
-#include "PanelFileController.h"
-#include "DialogAboutController.h"
-#include "DialogFontController.h"
-#include "DialogUnsavedFileController.h"
-#include "Main.h"

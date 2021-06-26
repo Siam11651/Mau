@@ -1,5 +1,7 @@
 #pragma once
 
+#include "MasterHeader.h"
+
 class DialogUnsavedFileController : public DialogUnsavedFile
 {
 	FormEditorController* parent;
